@@ -22,7 +22,6 @@ This project uses machine learning models to predict the outcome of NCAA basketb
 | Random Forest          | Tree-based ensemble                         |
 | Gradient Boosting      | Best performer overall                      |
 | Support Vector Machine | Kernel method                               |
-| Neural Network (MLP)   | Two-layer MLP (64, 32) with ReLU            |
 | Higher Seed Guess      | Simple rule-based baseline (seed diff)      |
 | Random Guess           | Random 50/50 prediction                     |
 

@@ -75,27 +75,14 @@ All figures and CSV outputs will be saved automatically.
 
 ## 🧠 Models Evaluated
 
-<<<<<<< HEAD
-
-| Model | Description |
-|------------------------|----------------------------------------------|
-| Logistic Regression | Baseline linear model |
-| Random Forest | Tree-based ensemble, non-linear relationships|
-| Gradient Boosting | Boosted tree ensemble, strongest performer |
-| SVM | Support Vector Machine with scaling |
-| Higher Seed Guess | Simple baseline using `diff_seed` |
-| Random Guess | Random binary prediction (coin flip) |
-=======
-| Model | Description |
-|------------------------|---------------------------------------------|
-| Logistic Regression | Linear baseline |
-| Random Forest | Tree-based ensemble |
-| Gradient Boosting | Best performer overall |
-| Support Vector Machine | Kernel method |
-| Higher Seed Guess | Simple rule-based baseline (seed diff) |
-| Random Guess | Random 50/50 prediction |
-
-> > > > > > > 788f99d9d14ef1c08bdb116e0f8ea8319d3da438
+| Model               | Description                                   |
+| ------------------- | --------------------------------------------- |
+| Logistic Regression | Baseline linear model                         |
+| Random Forest       | Tree-based ensemble, non-linear relationships |
+| Gradient Boosting   | Boosted tree ensemble, strongest performer    |
+| SVM                 | Support Vector Machine with scaling           |
+| Higher Seed Guess   | Simple baseline using `diff_seed`             |
+| Random Guess        | Random binary prediction (coin flip)          |
 
 ---
 

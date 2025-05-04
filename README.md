@@ -4,6 +4,9 @@ This project uses machine learning to predict the outcome of NCAA basketball mat
 
 The goal is to evaluate how well different machine learning models can predict the winner of a given matchup.
 
+Datasets were acquired from Kaggle:
+- [March Madness 2025](https://www.kaggle.com/competitions/march-machine-learning-mania-2025/data?select=Conferences.csv})
+- [March Madness Data](https://www.kaggle.com/datasets/nishaanamin/march-madness-data)
 ---
 
 ## 🚀 Features

@@ -1,4 +1,3 @@
-
 # 🏀 NCAA Matchup Outcome Prediction (2025)
 
 This project uses machine learning to predict the outcome of NCAA basketball matchups using engineered statistical differences between teams. Models are trained on features such as point differential, seed difference, strength of schedule, and others — all calculated as team A minus team B.
@@ -76,14 +75,27 @@ All figures and CSV outputs will be saved automatically.
 
 ## 🧠 Models Evaluated
 
-| Model                  | Description                                  |
+<<<<<<< HEAD
+
+| Model | Description |
 |------------------------|----------------------------------------------|
-| Logistic Regression    | Baseline linear model                        |
-| Random Forest          | Tree-based ensemble, non-linear relationships|
-| Gradient Boosting      | Boosted tree ensemble, strongest performer   |
-| SVM                    | Support Vector Machine with scaling          |
-| Higher Seed Guess      | Simple baseline using `diff_seed`            |
-| Random Guess           | Random binary prediction (coin flip)         |
+| Logistic Regression | Baseline linear model |
+| Random Forest | Tree-based ensemble, non-linear relationships|
+| Gradient Boosting | Boosted tree ensemble, strongest performer |
+| SVM | Support Vector Machine with scaling |
+| Higher Seed Guess | Simple baseline using `diff_seed` |
+| Random Guess | Random binary prediction (coin flip) |
+=======
+| Model | Description |
+|------------------------|---------------------------------------------|
+| Logistic Regression | Linear baseline |
+| Random Forest | Tree-based ensemble |
+| Gradient Boosting | Best performer overall |
+| Support Vector Machine | Kernel method |
+| Higher Seed Guess | Simple rule-based baseline (seed diff) |
+| Random Guess | Random 50/50 prediction |
+
+> > > > > > > 788f99d9d14ef1c08bdb116e0f8ea8319d3da438
 
 ---
 
@@ -91,6 +103,7 @@ All figures and CSV outputs will be saved automatically.
 
 - **Train/Test Split:** 80/20 holdout to test generalization
 - **Cross-Validation:** 5-fold stratified CV to compute mean ± std for:
+
   - Accuracy
   - F1 Score
 
@@ -103,16 +116,19 @@ All figures and CSV outputs will be saved automatically.
 All figures are saved in the `figures/` folder. Key plots include:
 
 ### Model Performance
+
 - `cv_accuracy_with_std.png`: Accuracy with ± std error bars
 - `cv_f1_score.png`: F1 Score comparison
 - `log_loss_test_set.png`: Log loss on test data
 
 ### Feature Insights
+
 - `feature_importance.png`: Top 15 from Gradient Boosting
 - `permutation_importance.png`: Model-agnostic feature importance
 - `correlation_heatmap.png`: Feature correlation map
 
 ### Distribution Visuals
+
 - `class_distribution.png`: 0 vs 1 matchup label counts
 - `dist_<feature>.png`: Density plot per class
 - `boxplot_<feature>.png`: Distribution range comparison
@@ -123,8 +139,9 @@ All figures are saved in the `figures/` folder. Key plots include:
 ## 🔍 Summary Statistics
 
 Stored in:
+
 - `summary_stats_by_label.csv`  
-Includes descriptive statistics (mean, std, min, max) for the top 5 most predictive features, grouped by match outcome.
+  Includes descriptive statistics (mean, std, min, max) for the top 5 most predictive features, grouped by match outcome.
 
 ---
 
@@ -148,6 +165,7 @@ Includes descriptive statistics (mean, std, min, max) for the top 5 most predict
 ## 🧑‍💻 Author & Tools
 
 Built with:
+
 - Python 3.x
 - pandas, numpy, matplotlib, seaborn
 - scikit-learn

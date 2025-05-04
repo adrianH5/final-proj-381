@@ -1,120 +1,155 @@
-# 🏀 NCAA Matchup Outcome Prediction - 2025
 
-This project uses machine learning models to predict the outcome of NCAA basketball matchups using team performance difference metrics. It evaluates multiple algorithms, compares them to simple baselines, and provides detailed visual and statistical insights.
+# 🏀 NCAA Matchup Outcome Prediction (2025)
+
+This project uses machine learning to predict the outcome of NCAA basketball matchups using engineered statistical differences between teams. Models are trained on features such as point differential, seed difference, strength of schedule, and others — all calculated as team A minus team B.
+
+The goal is to evaluate how well different machine learning models can predict the winner of a given matchup.
 
 ---
 
-## 📁 Contents
+## 🚀 Features
 
-- `matchup_modeling_analysis.py` – Full executable analysis script
-- `matchups_full_2025.csv` – Dataset (features start with `diff_`)
-- `figures/` – All saved visualizations
-- `cross_validation_results.csv` – Cross-validation summary
-- `summary_stats_by_label.csv` – Summary stats grouped by outcome
+- Model training using:
+  - Logistic Regression
+  - Random Forest
+  - Gradient Boosting
+  - Support Vector Machine
+- 5-fold Stratified Cross-Validation with mean and std reporting
+- Baseline comparisons: random guessing and higher-seed wins
+- Visual feature analysis: importance, distribution, correlation
+- Error bar plots for accuracy with standard deviation
+- All outputs saved for reproducibility
+
+---
+
+## 🗂️ Project Structure
+
+```
+.
+├── matchup_modeling_analysis.py       # Main analysis script
+├── matchups_full_2025.csv             # Input dataset
+├── cross_validation_results.csv       # Mean/std scores from CV
+├── summary_stats_by_label.csv         # Descriptive stats by label
+└── figures/                           # Saved charts and figures
+    ├── cv_accuracy_with_std.png
+    ├── cv_f1_score.png
+    ├── log_loss_test_set.png
+    ├── class_distribution.png
+    ├── correlation_heatmap.png
+    ├── feature_importance.png
+    ├── permutation_importance.png
+    ├── dist_<feature>.png
+    ├── boxplot_<feature>.png
+    └── pairplot_top5_features.png
+```
+
+---
+
+## ⚙️ Setup & Installation
+
+1. Clone the repo or download the files.
+2. Place your input dataset as `matchups_full_2025.csv` in the root folder.
+3. Install required dependencies:
+
+```bash
+pip install pandas numpy scikit-learn matplotlib seaborn
+```
+
+4. Run the script:
+
+```bash
+python matchup_modeling_analysis.py
+```
+
+All figures and CSV outputs will be saved automatically.
+
+---
+
+## 📚 Dataset Details
+
+- Input: `matchups_full_2025.csv`
+- Rows represent matchups between two teams.
+- Label: `1` if Team A wins, `0` if Team B wins.
+- Features: any column starting with `diff_` is used, representing statistical differences between Team A and Team B (e.g., `diff_efg_pct`, `diff_seed`, etc.)
 
 ---
 
 ## 🧠 Models Evaluated
 
-| Model                  | Description                                 |
-|------------------------|---------------------------------------------|
-| Logistic Regression    | Linear baseline                             |
-| Random Forest          | Tree-based ensemble                         |
-| Gradient Boosting      | Best performer overall                      |
-| Support Vector Machine | Kernel method                               |
-| Neural Network (MLP)   | Two-layer MLP (64, 32) with ReLU            |
-| Higher Seed Guess      | Simple rule-based baseline (seed diff)      |
-| Random Guess           | Random 50/50 prediction                     |
+| Model                  | Description                                  |
+|------------------------|----------------------------------------------|
+| Logistic Regression    | Baseline linear model                        |
+| Random Forest          | Tree-based ensemble, non-linear relationships|
+| Gradient Boosting      | Boosted tree ensemble, strongest performer   |
+| SVM                    | Support Vector Machine with scaling          |
+| Higher Seed Guess      | Simple baseline using `diff_seed`            |
+| Random Guess           | Random binary prediction (coin flip)         |
 
 ---
 
-## ⚙️ Metrics Used
+## 🧪 Evaluation Methods
 
-- **Accuracy**: Overall correct predictions  
-- **F1 Score**: Harmonic mean of precision and recall  
-- **Log Loss**: Penalizes incorrect confidence
+- **Train/Test Split:** 80/20 holdout to test generalization
+- **Cross-Validation:** 5-fold stratified CV to compute mean ± std for:
+  - Accuracy
+  - F1 Score
 
----
-
-## 🔍 Key Feature Engineering
-
-Only columns starting with `diff_` were used. These represent team-vs-team differences in:
-
-- Efficiency
-- Rebounding
-- Turnover rates
-- Power rankings
-- NCAA seed and round progress
+- **Log Loss (Binary Cross-Entropy):** Computed on test set for probability calibration
 
 ---
 
----
+## 📊 Visualizations
 
-## 📊 Visualizations (Improved Descriptions)
+All figures are saved in the `figures/` folder. Key plots include:
 
-All charts and plots are saved in the `figures/` folder for easy viewing.
+### Model Performance
+- `cv_accuracy_with_std.png`: Accuracy with ± std error bars
+- `cv_f1_score.png`: F1 Score comparison
+- `log_loss_test_set.png`: Log loss on test data
 
----
+### Feature Insights
+- `feature_importance.png`: Top 15 from Gradient Boosting
+- `permutation_importance.png`: Model-agnostic feature importance
+- `correlation_heatmap.png`: Feature correlation map
 
-### 📈 Model Performance
-
-**1. `accuracy_comparison.png`**  
-*What it shows:*  
-Bar chart comparing how often each model correctly predicted the winner of a game.
-
-**2. `f1_score_comparison.png`**  
-*What it shows:*  
-Compares models by F1 Score, which balances precision (how often wins were correctly identified) and recall (how many actual wins were found).  
-*Why it matters:* Especially important if the data has class imbalance.
-
-**3. `log_loss_comparison.png`**  
-*What it shows:*  
-Evaluates how good the models were at assigning probabilities to outcomes.  
-*Why it matters:* A model that confidently makes the wrong call is penalized more.
+### Distribution Visuals
+- `class_distribution.png`: 0 vs 1 matchup label counts
+- `dist_<feature>.png`: Density plot per class
+- `boxplot_<feature>.png`: Distribution range comparison
+- `pairplot_top5_features.png`: Visual interaction between top features
 
 ---
 
-### 🔎 Feature Insights
+## 🔍 Summary Statistics
 
-**4. `feature_importance.png`**  
-*What it shows:*  
-Top 15 features (stat differences between teams) that the Gradient Boosting model relied on most.  
-*Why it matters:* Helps identify which stats are most predictive (e.g., seed difference, margin of victory).
-
-**5. `permutation_importance.png`**  
-*What it shows:*  
-Alternative method showing how much model accuracy drops when each feature is shuffled.  
-*Why it matters:* Confirms importance using a model-agnostic method.
-
-**6. `correlation_heatmap.png`**  
-*What it shows:*  
-Grid showing how related each stat is to the others (blue = negative, red = positive).  
-*Why it matters:* Useful to spot redundant features or strong relationships.
+Stored in:
+- `summary_stats_by_label.csv`  
+Includes descriptive statistics (mean, std, min, max) for the top 5 most predictive features, grouped by match outcome.
 
 ---
 
-### 🧪 Feature Distributions and Differences
+## ✅ Key Insights
 
-**7. `class_distribution.png`**  
-*What it shows:*  
-Bar chart of how many matchups were won by Team A vs. Team B.  
-*Why it matters:* Reveals if the dataset is balanced or skewed toward one outcome.
-
-**8. `dist_<feature>.png`**  
-*What it shows:*  
-For each top feature, this shows how its values differ between Team A wins and Team B wins.  
-*Why it matters:* Helpful to visually see separation between classes.
-
-**9. `boxplot_<feature>.png`**  
-*What it shows:*  
-Side-by-side comparison of the distribution of feature values for wins vs. losses.  
-*Why it matters:* Makes it easier to compare feature medians, spreads, and outliers.
+- Gradient Boosting performed best in both F1 Score and Log Loss.
+- `diff_seed`, `diff_margin_of_victory`, and `diff_strength_of_schedule` were among the most predictive features.
+- Machine learning outperforms naive baselines like picking the higher seed or guessing randomly.
 
 ---
 
-### 🔀 Relationships Between Features
+## 💡 Future Directions
 
-**10. `pairplot_top5_features.png`**  
-*What it shows:*  
-Scatterplot matrix showing pairwise relationships between the top 5 most important features, colored by match outcome.  
-*Why it matters:* Helps see how combinations of features relate to win/loss.
+- Integrate XGBoost or LightGBM for optimized boosting
+- Incorporate contextual data: recent form, injuries, home-court
+- Add time-based splits to reflect seasonal dynamics
+- Use SHAP or LIME for explainable AI predictions
+
+---
+
+## 🧑‍💻 Author & Tools
+
+Built with:
+- Python 3.x
+- pandas, numpy, matplotlib, seaborn
+- scikit-learn
+
+---

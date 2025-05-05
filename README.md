@@ -1,4 +1,4 @@
-# 🏀 NCAA Matchup Outcome Prediction (2025)
+#  NCAA Matchup Outcome Prediction (2025)
 
 This project uses machine learning to predict the outcome of NCAA basketball matchups using engineered statistical differences between teams. Models are trained on features such as point differential, seed difference, strength of schedule, and others — all calculated as team A minus team B.
 
@@ -9,7 +9,7 @@ Datasets were acquired from Kaggle:
 - [March Madness Data](https://www.kaggle.com/datasets/nishaanamin/march-madness-data)
 ---
 
-## 🚀 Features
+##  Features
 
 - Model training using:
   - Logistic Regression
@@ -24,11 +24,11 @@ Datasets were acquired from Kaggle:
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 .
-├── matchup_modeling_analysis.py       # Main analysis script
+├── main.ipynb                         # Main analysis notebook
 ├── matchups_full_2025.csv             # Input dataset
 ├── cross_validation_results.csv       # Mean/std scores from CV
 ├── summary_stats_by_label.csv         # Descriptive stats by label
@@ -48,26 +48,32 @@ Datasets were acquired from Kaggle:
 
 ---
 
-## ⚙️ Setup & Installation
-This is specific for Google colab.
-1. Clone the repo or download the files, placing everything into a google drive folder.
-2. Place your input dataset as `matchups_full_2025.csv` in the root folder.
-3. Install required dependencies: (If using Google Colab, you can skip this step as the environment is pre-configured)
+## Setup & Installation
+This is specific for Google Colab.
+1. Clone the repo or download the files, uploading it to Google Drive.
+2. Open Google Colab and select main.ipynb from your Drive.
+3. At the top of the notebook, run the following setup:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+
+# Adjust the path below to match where you uploaded the project folder
+%cd /content/drive/MyDrive/Colab Notebooks/CPSC 381-581: Machine Learning/Final Project/final-proj-381-main
+```
+5. Run all cells in main.ipynb. All plots and output files will be generated automatically and saved in the working directory.
+
+Note: All required libraries are pre-installed in Colab. If running locally, install dependencies using:
 
 ```bash
 pip install pandas numpy scikit-learn matplotlib seaborn
 ```
 
-4. Run the main.ipynb notebook. The script will automatically load the dataset, perform the analysis, and generate all outputs.
-
-```bash
-
-
 All figures and CSV outputs will be saved automatically.
 
 ---
 
-## 📚 Dataset Details
+## Dataset Details
 
 - Input: `matchups_full_2025.csv`
 - Rows represent matchups between two teams.
@@ -76,7 +82,7 @@ All figures and CSV outputs will be saved automatically.
 
 ---
 
-## 🧠 Models Evaluated
+## Models Evaluated
 
 | Model               | Description                                   |
 | ------------------- | --------------------------------------------- |
@@ -89,7 +95,7 @@ All figures and CSV outputs will be saved automatically.
 
 ---
 
-## 🧪 Evaluation Methods
+##  Evaluation Methods
 
 - **Train/Test Split:** 80/20 holdout to test generalization
 - **Cross-Validation:** 5-fold stratified CV to compute mean ± std for:
@@ -101,7 +107,7 @@ All figures and CSV outputs will be saved automatically.
 
 ---
 
-## 📊 Visualizations
+##  Visualizations
 
 All figures are saved in the `figures/` folder. Key plots include:
 
@@ -126,7 +132,7 @@ All figures are saved in the `figures/` folder. Key plots include:
 
 ---
 
-## 🔍 Summary Statistics
+##  Summary Statistics
 
 Stored in:
 
@@ -135,7 +141,7 @@ Stored in:
 
 ---
 
-## ✅ Key Insights
+## Key Insights
 
 - Gradient Boosting performed best in both F1 Score and Log Loss.
 - `diff_seed`, `diff_margin_of_victory`, and `diff_strength_of_schedule` were among the most predictive features.

@@ -57,11 +57,8 @@ Datasets were acquired from Kaggle:
 pip install pandas numpy scikit-learn matplotlib seaborn
 ```
 
-4. Run the script:
+4. Run the script in google colab/jupyter notebook. You can run it in drive and colab easily.
 
-```bash
-python matchup_modeling_analysis.py
-```
 
 All figures and CSV outputs will be saved automatically.
 

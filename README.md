@@ -48,16 +48,18 @@ Datasets were acquired from Kaggle:
 ---
 
 ## ⚙️ Setup & Installation
-
-1. Clone the repo or download the files.
+This is specific for Google colab.
+1. Clone the repo or download the files, placing everything into a google drive folder.
 2. Place your input dataset as `matchups_full_2025.csv` in the root folder.
-3. Install required dependencies:
+3. Install required dependencies: (If using Google Colab, you can skip this step as the environment is pre-configured)
 
 ```bash
 pip install pandas numpy scikit-learn matplotlib seaborn
 ```
 
-4. Run the script in google colab/jupyter notebook. You can run it in drive and colab easily.
+4. Run the main.ipynb notebook. The script will automatically load the dataset, perform the analysis, and generate all outputs.
+
+```bash
 
 
 All figures and CSV outputs will be saved automatically.

@@ -149,7 +149,7 @@ Stored in:
 
 ---
 
-## 💡 Future Directions
+##  Future Directions
 
 - Integrate XGBoost or LightGBM for optimized boosting
 - Incorporate contextual data: recent form, injuries, home-court
@@ -158,7 +158,7 @@ Stored in:
 
 ---
 
-## 🧑‍💻 Author & Tools
+##  Author & Tools
 
 Built with:
 
